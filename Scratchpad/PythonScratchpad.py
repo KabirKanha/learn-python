@@ -405,3 +405,23 @@ sandy = Enemy(18)
 jason.get_energy()
 sandy.get_energy()
 '''
+
+'''
+# CLASS VARIABLES AND INSTANCE VARIABLES
+
+class Girl:
+    # Class variable, same for all objects
+    gender = 'female'
+
+    def __init__(self, name):
+        # Instance variables, defined independently for every object.
+        self.name = name
+
+
+g1 = Girl("Akanksha")
+g2 = Girl("Manisha")
+print(g1.gender)
+print(g2.gender)
+print(g1.name)
+print(g2.name)
+'''

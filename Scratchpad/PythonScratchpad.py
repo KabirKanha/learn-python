@@ -371,3 +371,37 @@ enemy2.attack()
 enemy2.checkLife()
 '''
 
+'''
+# INIT
+
+class Test:
+
+    def __init__(self):
+        # Called as soon as an object of this class is declared.
+        print("Hello, World!")
+
+    def swim(self):
+        print("I like to swim")
+
+
+test_class1 = Test()
+test_class1.swim()
+test_class2 = Test()
+test_class2.swim()
+
+
+class Enemy:
+    def __init__(self, x):
+        # Used as a constructor
+        self.energy = x
+
+    def get_energy(self):
+        print(self.energy)
+
+
+jason = Enemy(5)
+sandy = Enemy(18)
+
+jason.get_energy()
+sandy.get_energy()
+'''

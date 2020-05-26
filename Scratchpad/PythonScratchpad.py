@@ -318,3 +318,26 @@ def get_single_item_data(item_url):
 # Can use sets to get a comprehensive and un-duplicated list of links
 spider(1)
 '''
+
+'''
+# EXCEPTIONS
+# Not syntax errors, but errors triggered due to exceptional runtime circumstances.
+
+while True:
+    try:
+        ans = int(input("What is your favourite number? "))
+        print(20 / ans)
+        break
+    except ValueError:
+        print("Enter a number!")
+    except ZeroDivisionError:
+        print("Zero not allowed.")
+    except:
+        # Not recommended
+        # Catches all types of errors
+        print("We don't know what went wrong")
+    finally:
+        # Executed no matter what
+        print("End of iteration.")
+'''
+

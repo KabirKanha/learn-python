@@ -210,3 +210,111 @@ def downloadWebImage(url):
 downloadWebImage("https://cdn.arstechnica.net/wp-content/uploads/2017/03/GettyImages-461246108-1-800x941.jpg")
 '''
 
+'''
+# READ AND WRITE FILES
+
+fw = open('sample.txt', 'w')
+# Write mode
+fw.write("Some random stuff.\n")
+fw.write("What are you doing here?\n")
+fw.write("Third line.\n")
+fw.close()
+
+fr = open('sample.txt', 'r')
+# Read mode
+text = fr.read()
+print(text)
+fr.close()
+'''
+
+'''
+# From the internet
+
+from urllib import request
+
+download_url = 'https://download.microsoft.com/download/4/C/8/4C830C0C-101F-4BF2-8FCB-32D9A8BA906A' \
+               '/Import_User_Sample_en.csv '
+
+
+def download_data(url):
+    response = request.urlopen(url)
+    csv = response.read().decode("utf-8-sig").encode("utf-8")
+    # Remove BOM characters
+    csv_str = str(csv)
+    # Right now, everything is in one line
+    lines = csv_str.split("\\n")
+    # Split it into lines
+    dest = r'data.csv'  # 'r' stands for raw string, avoids needing to escape everything
+    fw2 = open(dest, 'w')
+    for line in lines:
+        fw2.write(line + "\n")
+    fw2.close()
+
+
+download_data(download_url)
+'''
+
+'''
+# WEB CRAWLER (Simple)
+
+import requests
+from bs4 import BeautifulSoup
+
+
+def spider(max_pages):
+    page = 1
+    while page <= max_pages:
+        url = r"https://codeforces.com/contest/1360/standings/page/" + str(page)
+        source_code = requests.get(url)
+        # HTML format
+        plain_text = source_code.text
+        # Now in plaintext
+        soup = BeautifulSoup(plain_text, features="html.parser")
+        for link in soup.findAll('a', {'class': "rated-user"}):
+            href = r"https://codeforces.com" + link.get('href')
+            title = link.text
+            print(href)
+            print(title)
+        page += 1
+
+
+spider(1)
+'''
+
+'''
+# WEB CRAWLER (Advanced)
+
+import requests
+from bs4 import BeautifulSoup
+
+
+def spider(max_pages):
+    page = 1
+    while page <= max_pages:
+        url = r"https://codeforces.com/contest/1360/standings/page/" + str(page)
+        source_code = requests.get(url)
+        # HTML format
+        plain_text = source_code.text
+        # Now in plaintext
+        soup = BeautifulSoup(plain_text, features="html.parser")
+        for link in soup.findAll('a', {'class': "rated-user"}):
+            href = r"https://codeforces.com" + link.get('href')
+            title = link.text
+            print("\n\n"+href)
+            print(title)
+            get_single_item_data(href)
+        page += 1
+
+
+def get_single_item_data(item_url):
+    source_code = requests.get(item_url)
+    # HTML format
+    plain_text = source_code.text
+    # Now in plaintext
+    soup = BeautifulSoup(plain_text, features="html.parser")
+    for link in soup.findAll('a'):
+        href = r"https://codeforces.com" + link.get('href')
+        print(href)
+# Can use sets to get a comprehensive and un-duplicated list of links
+spider(1)
+'''

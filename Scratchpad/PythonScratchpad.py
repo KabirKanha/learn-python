@@ -341,3 +341,33 @@ while True:
         print("End of iteration.")
 '''
 
+'''
+# CLASSES AND OBJECTS
+# Helps group similar variables and functions together.
+
+class Enemy:
+    life = 3
+
+    def attack(self):
+        print("\nOuch!")
+        self.life -= 1
+
+    def checkLife(self):
+        if self.life <= 0:
+            print("DEAD!")
+        else:
+            print(str(self.life) + " life left")
+
+
+enemy1 = Enemy()
+enemy2 = Enemy()
+enemy1.attack()
+enemy1.checkLife()
+enemy1.attack()
+enemy1.checkLife()
+enemy1.attack()
+enemy1.checkLife()
+enemy2.attack()
+enemy2.checkLife()
+'''
+

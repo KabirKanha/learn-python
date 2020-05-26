@@ -425,3 +425,58 @@ print(g2.gender)
 print(g1.name)
 print(g2.name)
 '''
+
+'''
+# INHERITANCE
+
+class Parent:
+    def print_last_name(self):
+        print('Roberts')
+
+
+class Child1(Parent):
+    # All functions of Parent magically included here
+    def print_first_name(self):
+        print("Stella")
+
+
+class Child2(Parent):
+    def print_first_name(self):
+        print("Stella")
+
+    def print_last_name(self):
+        # Overrides the same function from Parent
+        print("Artois")
+
+
+person1 = Child1()
+person1.print_first_name()
+person1.print_last_name()
+
+person2 = Child2()
+person2.print_first_name()
+person2.print_last_name()
+'''
+
+'''
+# MULTIPLE INHERITANCE
+
+class Mario:
+    def move(self):
+        print("I can move")
+
+
+class Mushroom:
+    def eat_mushroom(self):
+        print("Now I am big!")
+
+
+class BigMario(Mario, Mushroom):
+    # Formality to match syntax, like "Do nothing"
+    pass
+
+
+bm = BigMario()
+bm.move()
+bm.eat_mushroom()
+'''

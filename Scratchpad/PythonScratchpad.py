@@ -193,3 +193,20 @@ HelperFunctions.fish()
 x = random.randrange(1, 1000)
 print(x)
 '''
+
+'''
+# DOWNLOADING IMAGES FROM THE INTERNET
+
+import random
+import urllib.request
+
+
+def downloadWebImage(url):
+    name = random.randrange(1, 1000)
+    full_name = str(name) + ".jpeg"
+    urllib.request.urlretrieve(url, full_name)
+
+
+downloadWebImage("https://cdn.arstechnica.net/wp-content/uploads/2017/03/GettyImages-461246108-1-800x941.jpg")
+'''
+

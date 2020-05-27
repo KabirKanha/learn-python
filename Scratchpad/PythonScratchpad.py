@@ -504,3 +504,116 @@ x.start()
 y.start()
 '''
 
+'''
+# WORD FREQUENCY COUNTER
+
+import requests
+from bs4 import BeautifulSoup
+import operator
+
+
+def start(url):
+    word_list = []
+    source_code = requests.get(url).text
+    soup = BeautifulSoup(source_code, features="html.parser")
+    for post_text in soup.findAll('div', {'class': 'topic'}):
+        content = post_text.text
+        words = content.lower().split()
+        print(words)
+        for word in words:
+            word_list.append(word)
+    clean_up_list(word_list)
+
+
+def clean_up_list(word_list):
+    clean_word_list = []
+    symbols = "`1234567890-=~!@#$%^&*()_+,./;'[]\\<>?:\"“{}|»–—"
+    for word in word_list:
+        # Removal of nonsensical symbols
+        for i in range(len(symbols)):
+            word = word.replace(symbols[i], "")
+        if len(word) > 0:
+            clean_word_list.append(word)
+    create_dictionary(clean_word_list)
+
+
+def create_dictionary(clean_word_list):
+    word_count = {}
+    for word in clean_word_list:
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+    for key, value in sorted(word_count.items(), key=operator.itemgetter(1)):
+        print(key, ":", value)
+
+
+start('https://codeforces.com/')
+'''
+
+'''
+# LAMBDA
+# Small function that has no name. For one-time use, unlike a function.
+
+
+answer = lambda x: x * 7
+print(answer(5))
+'''
+
+'''
+# ARGS and KWARGS
+# * args and **kwargs
+
+def foo1(required, *args, **kwargs):
+    # Here, one argument is necessary.
+    # *args collects all the extra positional arguments.
+    # **kwargs collects all the extra keyword arguments.
+    print("\n", required)
+    if args:
+        print(args)
+    if kwargs:
+        print(kwargs)
+
+
+# foo1() -> Gives error
+foo1("Hello")
+foo1("Hello", 1, 2, 3)
+foo1("Hello", 1, 2, 3, x=10, y=20)
+
+
+# Helps us write wrapper functions
+def foo2(x, *args, **kwargs):
+    kwargs['name'] = 'Alice'
+    new_args = args + ('extra', )
+    bar(x, *args, **kwargs)
+
+
+def bar(required, *args, **kwargs):
+    print("\n", required)
+    if args:
+        print(args)
+    if kwargs:
+        print(kwargs)
+
+
+foo2("Hello")
+foo2("Hello", 1, 2, 3)
+foo2("Hello", 1, 2, 3, a=10, b=20)
+'''
+
+'''
+# MERGING LISTS AND DICTIONARIES
+
+my_first_list = [1, 2, 3]
+my_second_list = [4, 5, 6]
+my_merged_list = [*my_first_list, *my_second_list]
+
+print(my_merged_list)
+
+my_first_dict = {"A": 1, "B": 2}
+my_second_dict = {"C": 3, "B": 4}
+my_merged_dict = {**my_first_dict, **my_second_dict}
+
+print(my_merged_dict)
+'''
+

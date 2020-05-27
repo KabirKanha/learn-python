@@ -480,3 +480,27 @@ bm = BigMario()
 bm.move()
 bm.eat_mushroom()
 '''
+
+'''
+# THREADING
+# Use with caution and only when necessary.
+# Helpful when parallelisation is possible.
+
+import threading
+
+
+class Messenger(threading.Thread):
+    def run(self):
+        # This function is called whenever a thread is created.
+        for _ in range(100):
+            # The underscore is used when we don't need a loop variable
+            print(threading.current_thread().getName())
+
+
+x = Messenger(name="Sender")
+y = Messenger(name="Receiver")
+x.start()
+# Creates thread and calls the 'run' function
+y.start()
+'''
+

@@ -824,7 +824,7 @@ print(filtered)
 
 '''
 # MAP
-# Takes a lambda function and applies it to every item of an iterable.
+# Takes a function and applies it to every item of an iterable.
 
 items = [
     ("Product1", 10),
@@ -984,10 +984,37 @@ print(y["age"])
 
 # Python dict to JSON
 x = {
-  "name": "John",
-  "age": 30,
-  "city": "New York"
+    "name": "John",
+    "age": 30,
+    "city": "New York"
 }
 y = json.dumps(x)
 print(y)
+
+# Other data types
+print(json.dumps({"name": "John", "age": 30}))
+print(json.dumps(["apple", "bananas"]))
+print(json.dumps(("apple", "bananas")))
+print(json.dumps("hello"))
+print(json.dumps(42))
+print(json.dumps(31.76))
+print(json.dumps(True))
+print(json.dumps(False))
+print(json.dumps(None))
+
+x = {
+    "name": "John",
+    "age": 30,
+    "married": True,
+    "divorced": False,
+    "children": ("Ann", "Billy"),
+    "pets": None,
+    "cars": [
+        {"model": "BMW 230", "mpg": 27.5},
+        {"model": "Ford Edge", "mpg": 24.1}
+    ]
+}
+
+# Print formatted JSON
+print(json.dumps(x, indent=4, separators=(". ", " = "), sort_keys=True))
 '''

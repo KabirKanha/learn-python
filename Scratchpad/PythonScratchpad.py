@@ -850,3 +850,80 @@ print(mapped_prices)
 mapped_prices2 = list(map(lambda item: item[1], items))
 print(mapped_prices2)
 '''
+
+'''
+# GENERATORS
+
+def square_nums(nums):
+    result = []
+    for i in nums:
+        result.append(i * i)
+    return result
+
+
+my_list = square_nums([1, 2, 3, 4, 5])
+print(my_list)
+
+
+# Conversion to generator
+
+def square_nums(nums):
+    for i in nums:
+        yield i * i
+
+
+my_gen = square_nums([1, 2, 3, 4, 5])
+for num in my_gen:
+    print(num)
+
+# list can also be created using list comprehensions
+my_list = [x * x for x in [1, 2, 3, 4, 5]]
+
+# Generators are similar to this
+my_gen = (x * x for x in [1, 2, 3, 4, 5])
+'''
+
+'''
+# POLYMORPHISM
+# Same method name with different parameter lists.
+
+print(6 * 5)
+print("Repeat" * 4)
+'''
+
+'''
+# ABSTRACT CLASSES
+
+class Computer1:
+    def process(self):
+        # This is an abstract method, and hence this class becomes abstract.
+        pass
+
+
+# Python, by default, does not support abstract classes
+# So, we need a workaround
+
+from abc import ABC, abstractmethod
+
+
+class Computer2(ABC):
+    @abstractmethod
+    def process(self):
+        pass
+
+
+class Laptop1(Computer2):
+    pass
+
+
+class Laptop2(Computer2):
+    def process(self):
+        print("OH YEAH!")
+
+
+com1 = Computer1()
+# com2 = Computer2() -> Gives error, can't instantiate abstract classes.
+# com3 = Laptop1() -> Gives error, abstract methods not implemented
+com4 = Laptop2()
+com4.process()
+'''

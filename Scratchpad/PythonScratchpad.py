@@ -927,3 +927,45 @@ com1 = Computer1()
 com4 = Laptop2()
 com4.process()
 '''
+
+'''
+# DATETIME
+
+import datetime
+
+x = datetime.datetime.now()
+print(x)
+print("The year is {}".format(x.year))
+print("The month is {}".format(x.month))
+
+# Create a date manually
+new_date = datetime.datetime(1998, 11, 4)
+print(new_date)
+new_keyword_date = datetime.datetime(year=2020, month=1, day=31, hour=13, minute=14, second=31)
+print(new_keyword_date)
+# Month full name
+print(new_date.strftime("%B"))
+# Month short name
+print(new_date.strftime("%b"))
+# Weekday full name
+print(new_date.strftime("%A"))
+# Weekday short name
+print(new_date.strftime("%a"))
+# Day of the month
+print(new_date.strftime("%d"))
+
+import time
+
+x = time.time()
+print(x)
+
+# Combine date and time
+today = datetime.date.today()
+print(today)
+now = datetime.datetime.now()
+print(now)
+curr_time = datetime.time(now.hour, now.minute, now.second)
+print(curr_time)
+combined = datetime.datetime.combine(today, curr_time)
+print(combined)
+'''

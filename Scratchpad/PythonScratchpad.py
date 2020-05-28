@@ -1048,3 +1048,33 @@ while True:
         open("id.txt", 'a').write(x + " ")
         break
 '''
+
+'''
+# CHECK IF A DICTIONARY IS CONTAINED IN ANOTHER
+
+dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict2 = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+print(dict1.items() <= dict2.items())
+'''
+
+'''
+# SORT A DICTIONARY ON THE VALUES
+
+unsorted_dict1 = {'Kabir': 'Boy', 'Leader': 'Archit', 5: 'Five', 'Company': 'Innovaccer'}
+unsorted_dict2 = {1: 2000, 4: 3, 2: -3, 'Zero': 0}
+while True:
+    try:
+        sorted_dict = {k: v for k, v in sorted(unsorted_dict1.items(), key=lambda item: item[1])}
+        break
+    except TypeError:
+        print("Dictionary values should only contain string or int. Stick to one type")
+print(sorted_dict)
+'''
+
+'''
+# SORT A LIST OF DICTIONARIES, ON TWO FIELDS
+
+input_dict_list = [{'name': 'Francis', 'age': 65}, {'name': 'Aron', 'age': 40}, {'name': 'Mike', 'age': 45}, {'name': 'Bran', 'age': 31}, {'name': 'James', 'age': 35}, {'name': 'Rick', 'age': 36}, {'name': 'Mike', 'age': 35}, {'name': 'James', 'age': 43}]
+final_dict_list = sorted(sorted(input_dict_list, key=lambda k: k['name']), key=lambda k: k['age'])
+print(final_dict_list)
+'''

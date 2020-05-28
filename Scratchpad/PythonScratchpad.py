@@ -1078,3 +1078,25 @@ input_dict_list = [{'name': 'Francis', 'age': 65}, {'name': 'Aron', 'age': 40}, 
 final_dict_list = sorted(sorted(input_dict_list, key=lambda k: k['name']), key=lambda k: k['age'])
 print(final_dict_list)
 '''
+
+'''
+# CACHE FUNCTION OUTPUT USING A DECORATOR
+# Similar to DP
+
+import functools
+
+
+@functools.lru_cache(maxsize=1024)
+def fibonacci(n):
+    # Expensive function - (2^n)
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+
+print(fibonacci(30))
+print(fibonacci(100))
+print(fibonacci(300))
+'''

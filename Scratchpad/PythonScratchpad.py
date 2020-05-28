@@ -969,3 +969,25 @@ print(curr_time)
 combined = datetime.datetime.combine(today, curr_time)
 print(combined)
 '''
+
+'''
+# JSON
+
+import json
+
+# JSON to Python dict
+x = '{ "name":"John", "age":30, "city":"New York"}'
+y = json.loads(x)
+# Stored as a dictionary
+print(y)
+print(y["age"])
+
+# Python dict to JSON
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+y = json.dumps(x)
+print(y)
+'''

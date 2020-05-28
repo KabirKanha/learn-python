@@ -1018,3 +1018,33 @@ x = {
 # Print formatted JSON
 print(json.dumps(x, indent=4, separators=(". ", " = "), sort_keys=True))
 '''
+
+'''
+# 12 DIGIT ALPHANUMERIC UID GENERATOR
+
+import random
+import string
+import os
+
+# Check if file already exists
+if not os.path.exists('id.txt'):
+    # Create if it doesn't
+    open('id.txt', 'w').close()
+
+# Get contents of file
+fr = open('id.txt', 'r')
+curr_set = fr.read().split()
+
+# Create list with already existing IDs
+already_allocated = []
+for i in curr_set:
+    already_allocated.append(str(i))
+
+# Allocate a new ID
+while True:
+    x = ''.join(random.choices(string.ascii_uppercase + string.digits, k=12))
+    if x not in already_allocated:
+        # Append to the file
+        open("id.txt", 'a').write(x + " ")
+        break
+'''

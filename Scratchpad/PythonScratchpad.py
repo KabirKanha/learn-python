@@ -617,3 +617,176 @@ my_merged_dict = {**my_first_dict, **my_second_dict}
 print(my_merged_dict)
 '''
 
+'''
+# CALLABLE OBJECTS
+
+class Adder:
+    def __init__(self, n):
+        print("HI")
+
+    def __call__(self, x):
+        print("HELLO")
+
+
+plus_3 = Adder(3)
+plus_3(4)
+print(callable(plus_3))
+z = 2
+print(callable(z))
+'''
+
+'''
+# DECORATORS
+# Temporary change/extension to a function
+
+def null_decorator(func):
+    return func
+
+
+def greet1():
+    return 'Hello!'
+
+
+@null_decorator
+def greet2():
+    return 'Hello!'
+
+
+def uppercase(func):
+    def to_upper():
+        return func().upper()
+
+    return to_upper
+
+
+@uppercase
+def greet3():
+    return 'Hello!'
+
+
+greet1 = null_decorator(greet1)
+print(greet1())
+print(greet2())
+print(greet3())
+
+
+# Nested Decorators
+def strong(func):
+    def wrapper():
+        return '<strong>' + func() + '</strong>'
+
+    return wrapper
+
+
+def emphasis(func):
+    def wrapper():
+        return '<em>' + func() + '</em>'
+
+    return wrapper
+
+
+@strong
+@emphasis
+def greet():
+    return 'Hello!'
+
+
+print(greet())
+'''
+
+'''
+# SCOPE OF VARIABLES
+
+x = 1  # x is a global variable
+y = 5  # y is a global variable
+
+
+def f():
+    global y
+    x = 2  # x is a local variable
+    y += 1  # Reassigning the global variable y
+    z = 10  # z is a local variable
+    print("Local variable x =", x)
+    print("Global variable y =", y)
+    print("Local variable z =", z)
+
+
+f()
+print("Global variable  x =", x)
+print("Global variable y =", y)
+'''
+
+'''
+# RANGE VS ENUMERATE
+
+x = [1, 5, 32, 45, 2, 112, 32]
+for i in range(len(x)):
+    print(i)
+for i, num in enumerate(x):
+    print(i)
+print(list(range(len(x))))
+print(list(enumerate(x)))
+'''
+
+'''
+# CLASS METHODS, STATIC METHODS and INSTANCE METHODS
+
+class MyClass:
+
+    def method(self):
+        # Also known as plain methods.
+        # Can modify object instance state as well as class state.
+        print("Instance method", self)
+
+    @classmethod
+    def classmethod(cls):
+        # Can only modify class state.
+        print("Class method", cls)
+
+    @staticmethod
+    def staticmethod():
+        # No modification possible
+        print("Static method")
+
+
+obj = MyClass()
+obj.method()
+obj.classmethod()
+obj.staticmethod()
+
+MyClass.classmethod()
+MyClass.staticmethod()
+
+# MyClass.method() -> Generates error.
+
+import math
+
+
+class Pizza:
+    def __init__(self, radius, ingredients):
+        self.ingredients = ingredients
+        self.radius = radius
+
+    def __repr__(self):
+        return f'Pizza({self.ingredients})'
+
+    @classmethod
+    def margherita(cls):
+        return cls(['cheese', 'tomatoes'])
+
+    @classmethod
+    def prosciutto(cls):
+        return cls(['cheese', 'tomatoes', 'ham', 'mushrooms'])
+
+    def area(self):
+        return self._circle_area(self.radius)
+
+    @staticmethod
+    def _circle_area(r):
+        return r ** 2 * math.pi
+
+
+pizza1 = Pizza(4.5, ['cheese'])
+print(pizza1)
+print(pizza1.area())
+'''

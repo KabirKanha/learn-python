@@ -790,3 +790,63 @@ pizza1 = Pizza(4.5, ['cheese'])
 print(pizza1)
 print(pizza1.area())
 '''
+
+'''
+# ITERATOR
+
+my_list = [23, 21, 3, 2, 340]
+for i in my_list:
+    print(i)
+
+# This can also be accomplished using the following:
+my_iterator = iter(my_list)
+print(type(my_iterator))
+while True:
+    try:
+        print(next(my_iterator))
+    except StopIteration:
+        break
+'''
+
+'''
+# FILTER
+# Applies a function to each item in the iterable and checks with criteria.
+
+items = [
+    ("Product1", 10),
+    ("Product2", 9),
+    ("Product3", 12),
+]
+
+filtered = list(filter(lambda item: item[1] >= 10, items))
+print(filtered)
+'''
+
+'''
+# MAP
+# Takes a lambda function and applies it to every item of an iterable.
+
+items = [
+    ("Product1", 10),
+    ("Product2", 9),
+    ("Product3", 12),
+]
+
+prices = []
+for item in items:
+    prices.append(item[1])
+print(prices)
+
+# Now, let's look at a better way.
+
+mapped_prices = []
+x = map(lambda item: item[1], items)
+for item in x:
+    mapped_prices.append(item)
+print(mapped_prices)
+
+# Now, let us look at the best way.
+
+mapped_prices2 = list(map(lambda item: item[1], items))
+print(mapped_prices2)
+'''

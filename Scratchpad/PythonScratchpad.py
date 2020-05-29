@@ -1100,3 +1100,101 @@ print(fibonacci(30))
 print(fibonacci(100))
 print(fibonacci(300))
 '''
+
+'''
+# UNPACK LISTS/TUPLES
+
+month, item, price = ['December', 'Cue Stick', 1500]
+# Ensure the number of variables and items are the same
+print(item)
+
+
+# What to do with different sizes?
+def drop_first_last(grades):
+    first, *mid, last = grades
+    print(sum(mid) / len(mid))
+
+
+my_list_grades = [12, 2, 3, 4, 5, 6, 7, 81]
+drop_first_last(my_list_grades)
+'''
+
+'''
+# ZIP
+
+first = ['Bucky', 'Tom', 'Taylor']
+last = ['Roberts', 'Hanks', 'Swift']
+
+names = zip(first, last)
+for a, b in names:
+    print(a, b)
+'''
+
+'''
+# MIN, MAX AND SORTING DICTIONARIES
+
+stocks = {
+    'GOOG': 520.54,
+    'FB': 76.45,
+    'YHOO': 39.28,
+    'AMZA': 306.21,
+    'AAPL': 99.76
+}
+
+print(min(zip(stocks.values(), stocks.keys())))
+print(max(zip(stocks.values(), stocks.keys())))
+print(sorted(zip(stocks.values(), stocks.keys())))
+
+# Multiple key sort
+
+from operator import itemgetter
+
+users = [
+    {'name': 'Francis', 'age': 65},
+    {'name': 'Aron', 'age': 40},
+    {'name': 'Mike', 'age': 45},
+    {'name': 'Bran', 'age': 31},
+    {'name': 'James', 'age': 35},
+    {'name': 'Rick', 'age': 36},
+    {'name': 'Mike', 'age': 35},
+    {'name': 'James', 'age': 43}
+]
+
+users = sorted(users, key=itemgetter('age'), reverse=True)
+users = sorted(users, key=itemgetter('name'))
+# Sorting is stable
+print(users)
+'''
+
+'''
+# SORTING CUSTOM OBJECTS
+
+from operator import attrgetter
+
+
+class User:
+    def __init__(self, name, uid):
+        self.name = name
+        self.user_id = uid
+
+    # String representation of class
+    def __repr__(self):
+        return self.name + "\t:\t" + str(self.user_id)
+
+
+users = [
+    User('Kabir', 411),
+    User('Kanha', 98),
+    User('Arora', 69),
+    User('Shiv', 1000),
+    User('Nadar', 54)
+]
+
+for user in users:
+    print(user)
+
+print('-----------')
+
+for user in sorted(users, key=attrgetter('name')):
+    print(user)
+'''

@@ -1198,3 +1198,14 @@ print('-----------')
 for user in sorted(users, key=attrgetter('name')):
     print(user)
 '''
+
+'''
+# HTML TO PDF CONVERTER
+# Apart from installing pdfkit, also need to download wkhtmltopdf and add to PATH.
+
+import pdfkit
+
+config = pdfkit.configuration(wkhtmltopdf="C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
+pdfkit.from_url('https://www.codeforces.com/', 'out.pdf', configuration=config)
+pdfkit.from_file('test.html', 'test.pdf', configuration=config)
+'''
